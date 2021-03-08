@@ -28,6 +28,9 @@ def _preprocess(matches, kps1, kps2, min_num_matches):
     if matches.size == 0:
         return False, None, None, None
 
+    if matches.shape[0] != 2 and matches.shape[1] == 2:
+        matches = matches.copy().T
+
     kp1 = kps1[:, :2]
     kp2 = kps2[:, :2]
 
